@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>House Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body style="background-color: #f4f4f4;">
+    <!-- Header -->
+    <h1 class="text-center mt-4 text-primary">House California Prediction</h1>
+
+    <!-- Form Container -->
+    <div class="container mt-4 p-4" style="background:#0dd99c; color:white; border-radius:20px;">
+      <form action="/house" method="post">
+        <h3 class="text-center mb-4">Fill in the Details</h3>
+
+        <!-- Longitude and Latitude -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="longitude" class="form-label">Longitude</label>
+            <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Enter longitude(-124.35 -> -114.31)">
+          </div>
+          <div class="col-md-6">
+            <label for="latitude" class="form-label">Latitude</label>
+            <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Enter latitude(32.54 -> 41.95)">
+          </div>
+        </div>
+
+        <!-- Row 2: Age and Rooms -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="age" class="form-label">Age</label>
+            <input type="text" class="form-control" id="age" name="age" placeholder="Enter house age">
+          </div>
+          <div class="col-md-6">
+            <label for="rooms" class="form-label">Rooms</label>
+            <input type="text" class="form-control" id="rooms" name="rooms" placeholder="Enter number of rooms">
+          </div>
+        </div>
+
+        <!-- Row 3: Bedrooms and Population -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="bedrooms" class="form-label">Bedrooms</label>
+            <input type="text" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms">
+          </div>
+          <div class="col-md-6">
+            <label for="population" class="form-label">Population</label>
+            <input type="text" class="form-control" id="population" name="population" placeholder="Enter population">
+          </div>
+        </div>
+
+        <!-- Row 4: Households and Income -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="households" class="form-label">Households</label>
+            <input type="text" class="form-control" id="households" name="households" placeholder="Enter number of households">
+          </div>
+          <div class="col-md-6">
+            <label for="income" class="form-label">Income</label>
+            <input type="text" class="form-control" id="income" name="income" placeholder="Enter median income">
+          </div>
+        </div>
+
+        <!-- Row 5: Proximity and Price-->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="proximity" class="form-label">Proximity</label>
+            <select class="form-control" id="proximity" name="proximity">
+              <option value="" disabled selected>-- Please Select an Option --</option>
+              <option value="0"><1H OCEAN</option>
+              <option value="1">INLAND</option>
+              <option value="2">ISLAND</option>
+              <option value="3">NEAR BAY</option>
+              <option value="4">NEAR OCEAN</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="predicted-price" class="form-label">Predicted Price</label>
+              <p id="predicted-price" class="form-control" style="background-color: #ffffff; color: black;">
+                Price:
+                {% if result %}
+                {{ result }}
+                {% endif %}
+              </p>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="row">
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Predict</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
